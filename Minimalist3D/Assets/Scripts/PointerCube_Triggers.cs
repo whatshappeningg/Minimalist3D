@@ -12,12 +12,13 @@ public class PointerCube_Triggers : MonoBehaviour
     public bool inContact;
 
     // private
-    private Renderer pointerCubeRenderer;
+    private Renderer _pointerCubeRenderer;
     private float _distance = 4f;
 
+    // Methods
     void Awake()
     {
-        pointerCubeRenderer = GetComponent<Renderer>();
+        _pointerCubeRenderer = GetComponent<Renderer>();
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -29,15 +30,12 @@ public class PointerCube_Triggers : MonoBehaviour
         inContact = false;
     }
 
-    void Update()
-    {
-        _distance += Input.GetAxis("Mouse ScrollWheel");
-
-        if (inContact) pointerCubeRenderer.material.color = Color.softRed;
-        else pointerCubeRenderer.material.color = Color.paleGreen;
-    }
     void LateUpdate()
     {
+        if (inContact) _pointerCubeRenderer.material.color = Color.softRed;
+        else _pointerCubeRenderer.material.color = Color.paleGreen;
+
+        _distance += Input.GetAxis("Mouse ScrollWheel");
         transform.position = Camera.main.transform.position + Camera.main.transform.forward.normalized * _distance;
     }
 

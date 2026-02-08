@@ -3,7 +3,6 @@ using UnityEngine;
 public class Player1_Camera : MonoBehaviour
 {
     // Attributes
-
     // public
     [Header("Camera Settings")]
     public Vector2 cameraSensibility = new Vector2(20f, 23f);
@@ -15,7 +14,7 @@ public class Player1_Camera : MonoBehaviour
     private float _maxRotation = 80;
     private Transform _cameraTransform;
 
-
+    // Methods
     void Start()
     {
         _cameraTransform = Camera.main.transform;

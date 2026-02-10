@@ -11,9 +11,7 @@ public class Cube_Instantiator : MonoBehaviour
     public GameObject cubePrefab;
 
     // private
-    private Renderer _cubeRenderer;
     private PointerCube_Triggers _triggersScript;
-    private Color[] _arrayColors = { Color.sandyBrown, Color.black, Color.skyBlue, Color.blueViolet, Color.yellowGreen };
 
     // Methods
     void Awake()
@@ -30,10 +28,6 @@ public class Cube_Instantiator : MonoBehaviour
     {
         yield return new WaitForEndOfFrame();
 
-        GameObject cube = Instantiate(cubePrefab, transform.position, transform.rotation);
-
-        _cubeRenderer = cube.GetComponent<Renderer>();
-        _cubeRenderer.material.color = _arrayColors[Random.Range(0, _arrayColors.Length)];
-
+        Instantiate(cubePrefab, transform.position, transform.rotation);
     }
 }

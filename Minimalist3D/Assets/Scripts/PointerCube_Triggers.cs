@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class PointerCube_Triggers : MonoBehaviour
 {
-
     // Attributes
     // public
     [System.NonSerialized]
@@ -46,7 +45,4 @@ public class PointerCube_Triggers : MonoBehaviour
 
         transform.position = cubePosition;
     }
-
-
-
 }

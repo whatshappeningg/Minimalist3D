@@ -8,13 +8,13 @@ public static class Data_Controller
     // public
 
     // private
-    private static List<Vector3> cubePositions = new List<Vector3>();
-    private static string filePath = Application.dataPath + "/Data/cubes.json";
+    private static List<Vector3> _cubePositions = new List<Vector3>();
+    private static string _filePath = Application.dataPath + "/Data/cubes.json";
 
     // Methods
     public static void SaveData(Vector3 position)
     {
-        cubePositions.Add(position);
+        _cubePositions.Add(position);
     }
 
     [System.Serializable]
@@ -26,18 +26,18 @@ public static class Data_Controller
     public static void SaveToJson()
     {
         CubePositionBucket wrapper = new CubePositionBucket();
-        wrapper.positions = cubePositions;
+        wrapper.positions = _cubePositions;
 
         string jsonString = JsonUtility.ToJson(wrapper);
-        File.WriteAllText(filePath, jsonString);
+        File.WriteAllText(_filePath, jsonString);
     }
 
     public static List<Vector3> LoadFromJson()
     {
-        if (!File.Exists(filePath))
+        if (!File.Exists(_filePath))
             return new List<Vector3>();
 
-        string jsonString = File.ReadAllText(filePath);
+        string jsonString = File.ReadAllText(_filePath);
         CubePositionBucket wrapper = JsonUtility.FromJson<CubePositionBucket>(jsonString);
 
         return wrapper.positions;
@@ -45,7 +45,6 @@ public static class Data_Controller
 
     public static void ResetData()
     {
-        cubePositions.Clear();
+        _cubePositions.Clear();
     }
-
 }

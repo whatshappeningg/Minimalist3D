@@ -9,16 +9,16 @@ public class Data_Manager : MonoBehaviour
     public GameObject cubePrefab;
 
     // private
-    private List<Vector3> cubePositions = new List<Vector3>();
+    private List<Vector3> _cubePositions = new List<Vector3>();
 
     // Methods
     void Awake()
     {
         Data_Controller.ResetData();
 
-        cubePositions = Data_Controller.LoadFromJson();
+        _cubePositions = Data_Controller.LoadFromJson();
 
-        foreach (Vector3 position in cubePositions)
+        foreach (Vector3 position in _cubePositions)
         {
             Instantiate(cubePrefab, position, Quaternion.identity);
         }
@@ -29,5 +29,4 @@ public class Data_Manager : MonoBehaviour
     {
         Data_Controller.SaveToJson();
     }
-
 }
